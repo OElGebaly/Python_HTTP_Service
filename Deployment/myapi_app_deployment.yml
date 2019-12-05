@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: my-api-app
+  labels:
+    name: my-api-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-api-app
+    spec:
+      containers:
+      - name: my-api-app
+        image: my_api_app:latest
+        env:
+        - name: FLASK_ENV
+          value: "production"
+        - name: SERVE_PORT
+          value: "5000"
+      restartPolicy: Always
+
